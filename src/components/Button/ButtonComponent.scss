@@ -1,0 +1,20 @@
+.btn {
+  min-width: 4rem;
+  padding-inline: 1rem;
+  border-radius: 2px;
+  padding-block: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  &.sm {
+    min-height: 2rem;
+  }
+  &.md {
+    min-height: 2.25rem;
+    font-size: 0.75rem;
+  }
+
+  &.w100 {
+    width: 100%;
+    text-align: center;
+  }
+}

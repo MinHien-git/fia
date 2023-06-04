@@ -1,0 +1,128 @@
+@use "../../styles/_globals.scss" as g;
+
+footer {
+  background-color: #bddbff;
+  padding: 4rem;
+  margin-top: 2rem;
+  min-height: 100vh;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  & > div {
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+  .main-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    height: 3px;
+    background-color: var(--blue-color);
+    width: 50vw;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  .social-media-container {
+    margin-top: 1.2rem;
+    width: 100%;
+    justify-content: space-around;
+    max-width: 20rem;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+      border-radius: 50%;
+      width: 2rem;
+      img {
+        width: 2rem;
+        filter: blur(0.6px) contrast(0.5) grayscale(0.91);
+      }
+    }
+  }
+  .footer-link-container {
+    margin-block: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-inline: auto;
+    max-width: 30rem;
+    .footer-links {
+      text-align: left;
+      gap: 1rem;
+      align-self: start;
+
+      ul {
+        display: grid;
+        gap: 0.25rem;
+        justify-self: start;
+        justify-items: start;
+        gap: 0.25rem;
+        color: var(--grey-color);
+        font-size: 0.825rem;
+      }
+    }
+  }
+  .footer-company-content {
+    flex-direction: column;
+    padding-block: 2rem;
+    align-items: center;
+    gap: 1rem;
+    & > p {
+      max-width: 50ch;
+      line-height: 2;
+    }
+  }
+  & > p {
+    line-height: 2;
+  }
+  @include g.mobile {
+    min-height: 80vh;
+  }
+  @include g.tablet {
+    min-height: 50vh;
+  }
+  @include g.desktop {
+    text-align: left;
+    & > p {
+      margin-top: 2rem;
+    }
+    .main-footer {
+      flex-direction: row;
+      .footer-company-content {
+        align-items: start;
+        .social-media-container {
+          justify-content: start;
+          margin-top: 0;
+          gap: 1rem;
+        }
+      }
+      hr {
+        margin-top: 2rem;
+        width: 3px;
+        height: 15rem;
+      }
+    }
+    .footer-link-container {
+      margin: 5rem 0rem 2rem 5rem;
+      flex-wrap: nowrap;
+      width: 50vw;
+      max-width: 50rem;
+      gap: 3rem;
+      ul {
+        width: 100%;
+        white-space: nowrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,291 @@
+@use "../../styles/_globals.scss" as g;
+
+.section-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  & > {
+    max-width: 40rem;
+  }
+}
+
+.card-container {
+  gap: 2rem;
+  & > .card {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  }
+  & > .card:nth-child(odd) {
+    background-color: var(--light-blue-color);
+
+    * {
+      color: var(--text-color);
+    }
+  }
+  & > .card:nth-child(even) {
+    background-color: var(--deep-light-blue-color);
+    opacity: 0.8;
+    p,
+    h3,
+    svg {
+      color: var(--white-color);
+    }
+  }
+}
+
+.landing-page-primary {
+  position: relative;
+  overflow: hidden;
+  // z-index: -100;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  #contact-sgv {
+    display: none;
+    @include g.tablet {
+      display: block;
+      position: absolute;
+      right: -500px;
+      bottom: 0;
+      z-index: -1;
+    }
+    @include g.desktop {
+      position: relative;
+      grid-column: 4 / -1;
+      grid-row: 1 / -1;
+    }
+  }
+
+  h1,
+  p:not(.text-center) {
+    text-align: center;
+    @include g.desktop {
+      text-align: left;
+    }
+  }
+  span {
+    font-size: 0.875rem;
+  }
+  & > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    input {
+      padding: 0.45rem 2rem 0.45rem 2rem;
+      border-radius: 5px;
+      border: 2px solid var(--grey-color);
+    }
+    @include g.desktop {
+      flex-direction: row;
+      gap: 0.25rem;
+      width: 35rem;
+      & > div {
+        width: 100%;
+        max-height: 3rem;
+      }
+    }
+  }
+  .wave {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    @include g.desktop {
+      width: 100%;
+    }
+  }
+  @include g.desktop {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    justify-content: center;
+    & > * {
+      justify-self: center;
+    }
+    & > h1 {
+      grid-column: 5 / span 4;
+      grid-row: 5;
+    }
+    & > p {
+      grid-column: 5 / span 4;
+      grid-row: 6;
+      font-weight: bold;
+    }
+    & > form {
+      grid-column: 5 / span 4;
+      grid-row: 7;
+      justify-content: center;
+      div {
+        width: fit-content;
+      }
+    }
+    & > span {
+      grid-column: 5 / span 4;
+      grid-row: 8 / span 1;
+    }
+    & > div {
+      grid-column: 5 / span 4;
+      grid-row: 9 / span 1;
+      button {
+        background-color: var(--deep-light-blue-color);
+      }
+    }
+    .button-popup-container {
+      @include g.tablet {
+        padding: 0;
+      }
+    }
+    #service-section {
+      .button-submit,
+      hr {
+        display: none;
+      }
+    }
+  }
+}
+.landing-page-primary-resources,
+.landing-page-primary-customer,
+.landing-page-primary-vertical {
+  position: relative;
+  height: auto;
+  overflow-x: hidden;
+  z-index: -1;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 3.5rem;
+
+  h2,
+  p {
+    text-align: center;
+  }
+  span {
+    font-size: 0.875rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    input {
+      padding: 0.45rem 2rem 0.45rem 2rem;
+      border-radius: 5px;
+      border: 2px solid var(--grey-color);
+    }
+  }
+}
+.landing-page-primary-resources {
+  background-color: #bddbff;
+  .card-container {
+    flex-direction: column;
+  }
+  @include g.tablet {
+    .card-container {
+      width: 90%;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.5rem;
+      .card {
+        min-width: 12rem;
+        width: 33.33%;
+      }
+    }
+  }
+  @include g.desktop {
+    .card-container {
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
+}
+.landing-page-primary-customer {
+  & > div {
+    align-items: center;
+    flex-direction: column;
+    & > *:nth-child(3) button {
+      background-color: var(--deep-light-blue-color);
+    }
+    @include g.mobile {
+      flex-direction: row;
+      gap: 1rem;
+    }
+    @include g.tablet {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+}
+.agencies-page-primary {
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 5rem;
+  align-items: center;
+  height: auto;
+  gap: 1rem;
+  h1,
+  p {
+    text-align: center;
+  }
+  hr {
+    width: 80vw;
+    height: 2px;
+  }
+}
+.agency-result {
+  height: auto;
+  min-height: 50vh;
+  width: 80vw;
+  margin-inline: auto;
+  .agencies-container {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    @include g.tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: left;
+    }
+    @include g.desktop {
+      max-width: 60rem;
+      padding-block: 2rem;
+      justify-content: left;
+    }
+  }
+}
+#filter-section {
+  z-index: 100;
+  width: 100vw;
+  flex-direction: column;
+  max-width: 100rem;
+  position: -webkit-sticky;
+  background: var(--white-color);
+  position: sticky;
+  top: 3.2rem;
+  justify-self: center;
+  padding-block: 1rem;
+  right: 0;
+  label {
+    // width: 100%;
+    #location {
+      border: 2px solid var(--grey-color);
+      border-radius: 5px;
+    }
+
+    #search-filter {
+      min-height: 4rem;
+    }
+  }
+  @include g.desktop {
+    input {
+      width: 30rem;
+    }
+  }
+}
+.button-popup-container.sticky {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--white-color);
+  padding: 1rem;
+  right: 0;
+  text-align: center;
+}
