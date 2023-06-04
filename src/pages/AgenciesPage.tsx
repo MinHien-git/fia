@@ -9,6 +9,7 @@ import AgencyCard from "../components/Card/AgencyCard";
 import useScrollToTop from "../hook/useScrollToTop";
 import axiosClient from "../api/axiosClient";
 import { ServerResponse } from "../interfaces/app_interfaces";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
 
 export default function AgenciesPage() {
   const [searchParams] = useSearchParams();
@@ -17,9 +18,11 @@ export default function AgenciesPage() {
   const [services, setServices] = useState(
     searchParams.get("service")?.split(",")
   );
+  const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
   useScrollToTop(0, 0);
   useEffect(() => {
     HandleTag();
+    clearNavbarBlock();
     async function fetchData() {
       const request = await axiosClient.get<ServerResponse>("/agency");
       console.log(request);

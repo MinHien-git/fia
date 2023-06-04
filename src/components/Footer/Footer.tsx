@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 export default function Footer() {
   return (
-    <footer className="primary-footer">
+    <footer className="primary-footer relative">
       <div>
         <div className="main-footer">
           <div className="footer-company-content flex">

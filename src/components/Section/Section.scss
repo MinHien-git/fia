@@ -1,4 +1,17 @@
 @use "../../styles/_globals.scss" as g;
+.wave {
+  position: absolute;
+  top: 0px;
+  z-index: -1;
+  &.bottom {
+    bottom: -1px;
+    top: auto;
+  }
+
+  @include g.desktop {
+    width: 100%;
+  }
+}
 
 .section-content {
   height: 100vh;
@@ -99,14 +112,7 @@
       }
     }
   }
-  .wave {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    @include g.desktop {
-      width: 100%;
-    }
-  }
+
   @include g.desktop {
     display: grid;
     width: 100%;
@@ -186,6 +192,11 @@
       padding: 0.45rem 2rem 0.45rem 2rem;
       border-radius: 5px;
       border: 2px solid var(--grey-color);
+    }
+  }
+  @include g.tablet {
+    & > p {
+      width: 60ch;
     }
   }
 }

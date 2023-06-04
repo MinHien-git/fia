@@ -7,6 +7,7 @@ import ButtonComponent from "../Button/ButtonComponent";
 import SearchForm from "../SearchForm/SearchForm";
 import { useScrollBlock } from "../../hook/useStopScroll";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ButtonComponentLink from "../Button/ButtonComponentLink";
 export default function Navbar() {
   const [toggle, setToggle] = useState<Boolean>(false);
   const [blockScroll, allowScroll] = useScrollBlock();
@@ -23,6 +24,7 @@ export default function Navbar() {
 
   return (
     <nav
+      id="primary-navigation-bar"
       className={clsx(
         "flex primary-navigation margin-l0 margin-r0 white-bg",
         toggle && "active"
@@ -57,12 +59,20 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link className="text-color" to="./" onClick={HandleClickEvent}>
+            <Link
+              className="text-color"
+              to="./login"
+              onClick={HandleClickEvent}
+            >
               For Client
             </Link>
           </li>
           <li>
-            <Link className="text-color" to="./" onClick={HandleClickEvent}>
+            <Link
+              className="text-color"
+              to="./login"
+              onClick={HandleClickEvent}
+            >
               For Agency
             </Link>
           </li>
@@ -71,6 +81,13 @@ export default function Navbar() {
           </li>
           <li>
             <ButtonComponent button_string={"Post your Project"} />
+          </li>
+          <li>
+            <ButtonComponentLink
+              button_string={"Login or Resigter"}
+              to="./register"
+              onClickEvent={HandleClickEvent}
+            />
           </li>
         </ul>
       </div>

@@ -14,13 +14,16 @@ import ReviewFeedbackCard from "../components/Card/ReviewFeedbackCard";
 import { AgencyPage_Type, ServerResponse } from "../interfaces/app_interfaces";
 import axiosClient from "../api/axiosClient";
 import { useParams, useSearchParams } from "react-router-dom";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
 
 export default function AgencyPage() {
   const { id } = useParams();
   const [pageInformation, setPageInformation] = useState<AgencyPage_Type>({});
   useScrollToTop(0, 0);
+  const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
   useEffect(() => {
     console.log(id);
+    clearNavbarBlock();
     async function fetchData() {
       const request = await axiosClient.get<ServerResponse>(`/agency/${id}`);
       console.log(request);

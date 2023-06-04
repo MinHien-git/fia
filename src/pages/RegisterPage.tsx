@@ -1,16 +1,23 @@
 import Section from "../components/Section/Section";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
 import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
 
 export default function RegisterPage() {
   const [name, setName] = useState<String>("");
   const [password, setPassword] = useState<String>("");
   const [email, setEmail] = useState<String>("");
   const [city, setCity] = useState<String>("");
+
+  const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
+
+  useEffect(() => {
+    clearNavbarBlock();
+  }, []);
 
   const handleSubmit: React.FormEventHandler = (
     e: React.FormEvent<HTMLInputElement>
@@ -57,7 +64,7 @@ export default function RegisterPage() {
     <>
       <ContentSection className="primary-register">
         <Section className="register-page-primary">
-          <h1>Register</h1>
+          <h1 className="deep-blue-clrs">Register</h1>
           <hr />
           <div className="register-container-section flex">
             <form className="login-form-section flex" onSubmit={handleSubmit}>

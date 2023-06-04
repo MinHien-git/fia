@@ -35,9 +35,10 @@ export default function LandingPage() {
           button_string="Post your Project"
         ></ButtonPopupComponent>
         <img id="contact-sgv" src="./Contact us 1.png" alt="contact-us" />
+        <img className="wave bottom" src="./blob-3.svg" alt="blob-3" />
       </Section>
       <Section className="landing-page-primary-resources">
-        <h2>What We Can Do For You</h2>
+        <h2 className="deep-blue-clrs">What We Can Do For You</h2>
         <p className="grey-color">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at
           sapien eu ipsum ornare{" "}
@@ -61,7 +62,8 @@ export default function LandingPage() {
         </div>
       </Section>
       <Section className="landing-page-primary-customer">
-        <h2>Let us join your business journey!</h2>
+        <img className="wave" src="./blob-4.svg" alt="blob-3" />
+        <h2 className="deep-blue-clrs">Let us join your business journey!</h2>
         <div className="flex">
           <ButtonComponent button_string="SearchAgencies" />
           <span>or</span>
@@ -97,7 +99,10 @@ export default function LandingPage() {
         </div>
       </Section>
       <Section className="landing-page-primary-customer">
-        <h2>Let us growth with your agency business</h2>
+        <img className="wave bottom" src="./blob-2.svg" alt="blob" />
+        <h2 className="deep-blue-clrs">
+          Let us growth with your agency business
+        </h2>
         <div className="flex">
           <ButtonComponent button_string="Create Profile" />
           <span>or</span>
@@ -140,7 +145,8 @@ export default function LandingPage() {
         </div>
       </Section>
       <Section className="landing-page-primary-customer">
-        <h2>About Us</h2>
+        <h2 className="deep-blue-clrs">About Us</h2>
+        <img className="wave" src="./blob-1.svg" alt="blob" />
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis
           dolorum aspernatur recusandae, deleniti amet quo nemo ab assumenda

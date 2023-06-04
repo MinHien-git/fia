@@ -9,6 +9,14 @@ export interface Button {
   onClickEvent?: () => void;
 }
 
+export interface Button_Link {
+  button_string: string;
+  to?: string;
+  button_size?: size;
+  className?: string;
+  onClickEvent?: () => void;
+}
+
 export interface ButtonPopup {
   button_string: string;
   button_size?: size;
