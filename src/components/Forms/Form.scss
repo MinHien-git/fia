@@ -301,6 +301,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 5px 0px;
   .section-container {
     overflow-x: hidden;
+    height: 22rem;
     & > section {
       background-color: var(--white-color);
       transform-origin: left right;
@@ -310,13 +311,14 @@
       position: absolute;
       transition: all 500ms ease-in-out;
       opacity: 0;
-      transform: scale(0) translateX(100vw);
+      transform-origin: top center;
+      transform: scale(0);
       & > *:last-child {
         height: 15rem;
         background-color: var(--white-color);
       }
       @include g.desktop {
-        transform: scale(0) translateX(20rem);
+        transform: scale(0);
       }
       & > tags-container {
         opacity: 0;
@@ -328,7 +330,7 @@
     & > section.active {
       position: relative;
       opacity: 1;
-      transform: scale(100%) translateX(0);
+      transform: scale(100%);
       overflow: hidden;
       & > tags-container {
         opacity: 1;
@@ -369,4 +371,8 @@
       flex-direction: row-reverse;
     }
   }
+}
+
+#post-form-container {
+  z-index: 1000;
 }

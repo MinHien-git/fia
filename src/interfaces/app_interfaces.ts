@@ -1,4 +1,5 @@
 import { size } from "@/constants/components";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { JsxElement } from "typescript";
 
 export interface Button {
@@ -86,3 +87,9 @@ export type AgencyPage_Type = {
   _id?: string;
   location?: string;
 };
+
+export interface Card_Interface {
+  title: string;
+  desc: string;
+  icon: IconDefinition;
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import "./Footer.scss";
 export default function Footer() {
-    return (React.createElement("footer", { className: "light-blue-bg primary-footer" },
+    return (React.createElement("footer", { className: "primary-footer" },
         React.createElement("div", null,
             React.createElement("div", { className: "main-footer" },
                 React.createElement("div", { className: "footer-company-content flex" },
-                    React.createElement("h2", { className: "logo" }, "Fia"),
+                    React.createElement("h2", { className: "logo" }, "Fya"),
                     React.createElement("h3", { className: "text-color" }, "FindAgencies"),
                     React.createElement("p", { className: "text-color" }, "our answer to the growing needs for a reliable, effective connection between SMEs/Startups and Agencies"),
                     React.createElement("ul", { className: "social-media-container flex" },

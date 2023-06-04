@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useRef, } from "react";
 import classnames from "classnames";
-import "./multiRangeSlider.css";
+import "./input.scss";
 export default function MultiRangeSlider(_a) {
     var min = _a.min, max = _a.max, onChange = _a.onChange;
     var _b = useState(min), minVal = _b[0], setMinVal = _b[1];
@@ -35,7 +35,7 @@ export default function MultiRangeSlider(_a) {
     useEffect(function () {
         onChange({ min: minVal, max: maxVal });
     }, [minVal, maxVal, onChange]);
-    return (React.createElement("div", { className: "container" },
+    return (React.createElement(React.Fragment, null,
         React.createElement("input", { type: "range", min: min, max: max, value: minVal, ref: minValRef, onChange: function (event) {
                 var value = Math.min(+event.target.value, maxVal - 1);
                 setMinVal(value);

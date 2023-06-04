@@ -9,6 +9,13 @@ import ContentSection from "../components/ContentSection/ContentSection";
 import useScrollToTop from "../hook/useScrollToTop";
 import ButtonComponent from "../components/Button/ButtonComponent";
 import VerticalCard from "../components/Card/VerticalCard";
+import {
+  faSearch,
+  faLocationCrosshairs,
+  faCheck,
+  faBell,
+  faChildReaching,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function LandingPage() {
   useScrollToTop(0, 0);
@@ -36,9 +43,21 @@ export default function LandingPage() {
           sapien eu ipsum ornare{" "}
         </p>
         <div className="card-container flex">
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            icon={faCheck}
+            title="Find you a Agency fit for your need."
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faSearch}
+            title="Hit the spot with Post your Project"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faLocationCrosshairs}
+            title="Direct Access to an Agency"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
         </div>
       </Section>
       <Section className="landing-page-primary-customer">
@@ -60,9 +79,21 @@ export default function LandingPage() {
           sapien eu ipsum ornare{" "}
         </p>
         <div className="card-container flex">
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            icon={faChildReaching}
+            title="Reach your potential customer"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faBell}
+            title="Get notification for suitable project"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faSearch}
+            title="Find yourself a agency to working with."
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
         </div>
       </Section>
       <Section className="landing-page-primary-customer">
@@ -84,9 +115,21 @@ export default function LandingPage() {
           sapien eu ipsum ornare{" "}
         </p>
         <div className="card-container flex">
-          <Card />
-          <Card />
-          <Card />
+          <Card
+            icon={faSearch}
+            title="Direct Access to an Agency"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faSearch}
+            title="Direct Access to an Agency"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
+          <Card
+            icon={faSearch}
+            title="Direct Access to an Agency"
+            desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at sapien eu ipsum ornare sollicitudin vel nec nisl. Nullam ut lacus porttitor, vestibulum ipsum eu, porta libero. Aliquam erat volutpat. Morbi ac tincidunt orci."
+          />
         </div>
       </Section>
       <Section className="landing-page-primary-resources">

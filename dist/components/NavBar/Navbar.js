@@ -31,7 +31,7 @@ export default function Navbar() {
                 React.createElement("input", { id: "search-bar-search", type: "text", placeholder: "search..." }))),
         React.createElement("div", { className: "logo" },
             React.createElement(Link, { to: "./", onClick: HandleClickEvent },
-                React.createElement("span", null, "Fia"))),
+                React.createElement("span", null, "Fya"))),
         React.createElement("div", { className: "navigation-items white-bg" },
             React.createElement("ul", null,
                 React.createElement("li", null,

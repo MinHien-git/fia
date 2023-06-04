@@ -4,10 +4,11 @@
   margin-block: 1rem;
   transition: all 500ms ease-in-out;
   .tag-label {
-    background-color: var(--light-blue-color);
+    background-color: var(--deep-light-blue-color);
     padding: 1rem;
     border-radius: 2rem;
     transition: all 500ms ease-in-out;
+    color: var(--white-color);
   }
 
   & > input[type="checkbox"] {
@@ -15,6 +16,5 @@
   }
   & > input[type="checkbox"]:checked + .tag-label {
     background-color: var(--blue-color);
-    color: var(--white-color);
   }
 }
