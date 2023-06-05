@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import axios from "axios";
 var axiosClient = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "https://fia-backend.vercel.app",
     headers: {
         "content-type": "application/json",
     },
