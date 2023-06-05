@@ -10,6 +10,7 @@ import useScrollToTop from "../hook/useScrollToTop";
 import axiosClient from "../api/axiosClient";
 import { ServerResponse } from "../interfaces/app_interfaces";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
+import useSetTitle from "../hook/useSetTitle";
 
 export default function AgenciesPage() {
   const [searchParams] = useSearchParams();
@@ -20,6 +21,7 @@ export default function AgenciesPage() {
   );
   const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
   useScrollToTop(0, 0);
+  useSetTitle("Fya | Find Agencies");
   useEffect(() => {
     HandleTag();
     clearNavbarBlock();

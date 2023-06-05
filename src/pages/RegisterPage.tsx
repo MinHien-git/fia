@@ -15,6 +15,8 @@ import {
   AuthContextType,
 } from "@/interfaces/app_interfaces";
 import { AuthContext } from "../context/authenticateContext";
+import InputField from "../components/InputForm/InputField";
+import useSetTitle from "../hook/useSetTitle";
 
 export default function RegisterPage() {
   const [name, setName] = useState<String>("");
@@ -28,6 +30,7 @@ export default function RegisterPage() {
   const { auth, login } = useContext(AuthContext) as AuthContextType;
 
   useScrollToTop(0, 0);
+  useSetTitle("Fya | Register");
   useEffect(() => {
     clearNavbarBlock();
   }, []);
@@ -123,49 +126,30 @@ export default function RegisterPage() {
           <hr />
           <div className="register-container-section flex">
             <form className="login-form-section flex" onSubmit={handleSubmit}>
-              <div className="grid input-container">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="name"
-                  onChange={handleName}
-                  required
-                />
-                <label htmlFor="name">name</label>
-              </div>
-              <div className="grid input-container">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="email"
-                  onChange={handleEmail}
-                  required
-                />
-                <label htmlFor="email">email</label>
-              </div>
-              <div className="grid input-container">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  onChange={handlePassword}
-                  required
-                />
-                <label htmlFor="password">password</label>
-              </div>
-              <div className="grid input-container">
-                <input
-                  id="city"
-                  name="city"
-                  placeholder="city"
-                  onChange={handleCity}
-                  required
-                />
-                <label htmlFor="city">city</label>
-              </div>
+              <InputField
+                type="text"
+                id="name"
+                label="name"
+                formEvent={handleName}
+              />
+              <InputField
+                type="email"
+                id="email"
+                label="email"
+                formEvent={handleEmail}
+              />
+              <InputField
+                type="password"
+                id="password"
+                label="password"
+                formEvent={handlePassword}
+              />
+              <InputField
+                type="city"
+                id="city"
+                label="city"
+                formEvent={handleCity}
+              />
               <ButtonSubmitForm button_string="register" />
             </form>
             <p>

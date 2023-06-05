@@ -16,9 +16,11 @@ import {
   faBell,
   faChildReaching,
 } from "@fortawesome/free-solid-svg-icons";
+import useSetTitle from "../hook/useSetTitle";
 
 export default function LandingPage() {
   useScrollToTop(0, 0);
+  useSetTitle("Fya | Home");
   return (
     <ContentSection>
       <Section className="landing-page-primary">

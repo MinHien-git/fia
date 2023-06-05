@@ -47,6 +47,7 @@ import useScrollToTop from "../hook/useScrollToTop";
 import { useNavigate } from "react-router-dom";
 import Notification from "../components/Card/Notification";
 import Loader from "../components/Loader/Loader";
+import InputField from "../components/InputForm/InputField";
 export default function LoginPage() {
     var _a = useState(""), email = _a[0], setEmail = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
@@ -103,9 +104,7 @@ export default function LoginPage() {
                 React.createElement("hr", null),
                 React.createElement("div", { className: "login-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "email", autoComplete: "on", onChange: handleName, required: true }),
-                            React.createElement("label", { htmlFor: "name" }, "email")),
+                        React.createElement(InputField, { type: "text", id: "name", label: "name", formEvent: handleName }),
                         React.createElement("div", { className: "grid input-container" },
                             React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", autoComplete: "on", onChange: handlePassword, required: true }),
                             React.createElement("label", { htmlFor: "password" }, "password")),
