@@ -45,34 +45,41 @@ import { useToggleNavbar } from "../hook/useToggleNavbar";
 import { AuthContext } from "../context/authenticateContext";
 import useScrollToTop from "../hook/useScrollToTop";
 import { useNavigate } from "react-router-dom";
+import Notification from "../components/Card/Notification";
+import Loader from "../components/Loader/Loader";
 export default function LoginPage() {
     var _a = useState(""), email = _a[0], setEmail = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
     var _c = useToggleNavbar(), navbarBlock = _c[0], clearNavbarBlock = _c[1];
     var _d = useContext(AuthContext), auth = _d.auth, login = _d.login;
     var navigate = useNavigate();
+    var _e = useState(React.createElement(React.Fragment, null)), notification = _e[0], setNotification = _e[1];
+    var _f = useState(React.createElement(React.Fragment, null)), load = _f[0], setLoader = _f[1];
     useScrollToTop(0, 0);
     useEffect(function () {
         clearNavbarBlock();
     }, []);
     var handleSubmit = function (e) {
-        // console.log(`called ${email} ${password}`);
         e.preventDefault();
         function postData() {
             return __awaiter(this, void 0, void 0, function () {
                 var request;
                 return __generator(this, function (_a) {
+                    setLoader(Loader);
                     request = axiosClient.post("/login", {
                         email: email,
                         password: password,
                     });
                     request.then(function (result) {
                         var success = result.success, message = result.message, response_status = result.response_status, data = result.data, pagination = result.pagination;
-                        console.log(message);
+                        setNotification(React.createElement(Notification, { message: success
+                                ? "Login successfully"
+                                : "Login fail,please check your email and password", status: success ? "success" : "fail" }));
                         if (data && success) {
                             login(data);
                             return navigate("/");
                         }
+                        setLoader(React.createElement(React.Fragment, null));
                     });
                     return [2 /*return*/];
                 });
@@ -88,17 +95,19 @@ export default function LoginPage() {
         setPassword(e.currentTarget.value);
     };
     return (React.createElement(React.Fragment, null,
+        load,
         React.createElement(ContentSection, { className: "primary-login" },
             React.createElement(Section, { className: "login-page-primary" },
+                notification,
                 React.createElement("h1", { className: "deep-blue-clrs" }, "Login"),
                 React.createElement("hr", null),
                 React.createElement("div", { className: "login-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "email", autoComplete: "on", onChange: handleName }),
+                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "email", autoComplete: "on", onChange: handleName, required: true }),
                             React.createElement("label", { htmlFor: "name" }, "email")),
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", autoComplete: "on", onChange: handlePassword }),
+                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", autoComplete: "on", onChange: handlePassword, required: true }),
                             React.createElement("label", { htmlFor: "password" }, "password")),
                         React.createElement(ButtonSubmitForm, { button_string: "login" })),
                     React.createElement("p", null,

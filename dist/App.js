@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { AuthProvider } from "./context/authenticateContext";
 import { ThemeProvider } from "./context/themeContext";
+import ConvertToAgenciesPage from "./pages/ConvertAgenciesPage";
 function App() {
     return (React.createElement(React.Fragment, null,
         React.createElement(ThemeProvider, null,
@@ -19,6 +20,8 @@ function App() {
                         React.createElement(Route, { path: "/", element: React.createElement(LandingPage, null) }),
                         React.createElement(Route, { path: "/agency" },
                             React.createElement(Route, { path: "", element: React.createElement(AgenciesPage, null) })),
+                        React.createElement(Route, { path: "/business" },
+                            React.createElement(Route, { path: "", element: React.createElement(ConvertToAgenciesPage, null) })),
                         React.createElement(Route, { path: "agency/:id", element: React.createElement(AgencyPage, null) }),
                         React.createElement(Route, { path: "/login", element: React.createElement(LoginPage, null) }),
                         React.createElement(Route, { path: "/register", element: React.createElement(RegisterPage, null) })),

@@ -47,14 +47,17 @@ export default function Navbar() {
                     React.createElement(Link, { className: "text-color", to: "./services", onClick: HandleClickEvent }, "Our Services")),
                 React.createElement("li", null,
                     React.createElement(Link, { className: "text-color", to: "./login", onClick: HandleClickEvent }, "For Client")),
-                React.createElement("li", null,
-                    React.createElement(Link, { className: "text-color", to: "./login", onClick: HandleClickEvent }, "For Agency")),
+                (auth === null || auth === void 0 ? void 0 : auth.type) === "AGENCY" ? (React.createElement("li", null,
+                    React.createElement(Link, { className: "text-color", to: "./login", onClick: HandleClickEvent }, "For Agency"))) : null,
                 React.createElement("li", null,
                     React.createElement(SearchForm, null)),
                 React.createElement("li", null,
                     React.createElement(ButtonComponent, { button_string: "Post your Project" })),
                 !auth ? (React.createElement("li", null,
-                    React.createElement(ButtonComponentLink, { button_string: "Login or Resigter", to: "./register", onClickEvent: HandleClickEvent }))) : (React.createElement("li", null,
-                    React.createElement("button", { onClick: logoutEvent, className: clsx("btn deep-blue-bg white-clrs md"), typeof: "button", style: { width: "9rem", background: "#c91c4a" } }, "log out")))))));
+                    React.createElement(ButtonComponentLink, { button_string: "Login or Resigter", to: "./register", onClickEvent: HandleClickEvent }))) : (React.createElement(React.Fragment, null,
+                    (auth === null || auth === void 0 ? void 0 : auth.type) === "CLIENT" ? (React.createElement("li", null,
+                        React.createElement(Link, { to: "./business", className: clsx("btn business-plan md"), typeof: "button" }, "Business Plan"))) : null,
+                    React.createElement("li", null,
+                        React.createElement("button", { onClick: logoutEvent, className: clsx("btn deep-blue-bg white-clrs md"), typeof: "button", style: { width: "9rem", background: "#c91c4a" } }, "log out"))))))));
 }
 //# sourceMappingURL=Navbar.js.map

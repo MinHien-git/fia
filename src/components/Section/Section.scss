@@ -3,6 +3,7 @@
   position: absolute;
   top: 0px;
   z-index: -1;
+  overflow: hidden;
   &.bottom {
     bottom: -1px;
     top: auto;
@@ -241,7 +242,9 @@
     }
   }
 }
-.agencies-page-primary {
+.agencies-page-primary,
+.business-page-start-section,
+.business-page-infomation-section {
   position: relative;
   overflow-x: hidden;
   padding-top: 5rem;

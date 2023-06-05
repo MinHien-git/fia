@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import { AuthProvider } from "./context/authenticateContext";
 import { ThemeProvider } from "./context/themeContext";
+import ConvertToAgenciesPage from "./pages/ConvertAgenciesPage";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/agency">
                 <Route path="" element={<AgenciesPage />} />
+              </Route>
+              <Route path="/business">
+                <Route path="" element={<ConvertToAgenciesPage />} />
               </Route>
               <Route path="agency/:id" element={<AgencyPage />} />
               <Route path="/login" element={<LoginPage />} />

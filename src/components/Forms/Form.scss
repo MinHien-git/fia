@@ -359,9 +359,12 @@
     #postproject-previous-btn {
       text-decoration: underline;
       font-size: 0.75rem;
-      bottom: calc(0.8rem);
+      bottom: -0.8rem;
       & > .stop {
         opacity: 0;
+      }
+      @include g.tablet {
+        bottom: 0;
       }
     }
     @include g.tablet {
@@ -369,6 +372,7 @@
       display: flex;
       justify-content: space-around;
       flex-direction: row-reverse;
+      align-items: center;
     }
   }
 }

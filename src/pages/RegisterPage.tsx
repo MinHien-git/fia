@@ -1,5 +1,5 @@
 import Section from "../components/Section/Section";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
@@ -7,14 +7,26 @@ import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
 import useScrollToTop from "../hook/useScrollToTop";
+import { redirect, useNavigate } from "react-router-dom";
+import Notification from "../components/Card/Notification";
+import Loader from "../components/Loader/Loader";
+import {
+  Request_Interface,
+  AuthContextType,
+} from "@/interfaces/app_interfaces";
+import { AuthContext } from "../context/authenticateContext";
 
 export default function RegisterPage() {
   const [name, setName] = useState<String>("");
   const [password, setPassword] = useState<String>("");
   const [email, setEmail] = useState<String>("");
   const [city, setCity] = useState<String>("");
-
+  let [load, setLoader] = useState(<></>);
+  const navigate = useNavigate();
+  let [notification, setNotification] = useState(<></>);
   const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
+  const { auth, login } = useContext(AuthContext) as AuthContextType;
+
   useScrollToTop(0, 0);
   useEffect(() => {
     clearNavbarBlock();
@@ -25,17 +37,57 @@ export default function RegisterPage() {
   ) => {
     e.preventDefault();
     async function postData() {
-      const request = await axiosClient.post(`/signup/agencies`, {
-        name: name,
-        email: email,
-        password: password,
-        location: city,
-        convertToAgencies: true,
+      setLoader(Loader);
+      const request = axiosClient.post<any, Request_Interface>(
+        `/signup/agencies`,
+        {
+          name: name,
+          email: email,
+          password: password,
+          location: city,
+          convertToAgencies: true,
+        }
+      );
+      request.then((result) => {
+        const { success, message } = result;
+        setNotification(
+          <Notification
+            message={
+              success
+                ? "Resgister successfully"
+                : "Resgister fail,please check your email and password"
+            }
+            status={success ? "success" : "fail"}
+          />
+        );
+        if (success) {
+          const login_request = axiosClient.post<any, Request_Interface>(
+            `/login`,
+            {
+              email: email,
+              password: password,
+            }
+          );
+          request.then((result) => {
+            const {
+              success,
+              message,
+              response_status,
+              data,
+              pagination,
+            }: Request_Interface = result;
+            console.log(result);
+            if (data && success) {
+              login(data);
+              return navigate("/");
+            }
+          });
+          return navigate("/");
+        }
       });
-      let { data, success }: any = request;
-      console.log(request);
-      console.log(data, success);
+      setLoader(<></>);
     }
+    console.log("submit");
     postData();
   };
   const handleEmail: React.FormEventHandler = (
@@ -63,8 +115,10 @@ export default function RegisterPage() {
   };
   return (
     <>
+      {load}
       <ContentSection className="primary-register">
         <Section className="register-page-primary">
+          {notification}
           <h1 className="deep-blue-clrs">Register</h1>
           <hr />
           <div className="register-container-section flex">
@@ -76,6 +130,7 @@ export default function RegisterPage() {
                   name="name"
                   placeholder="name"
                   onChange={handleName}
+                  required
                 />
                 <label htmlFor="name">name</label>
               </div>
@@ -86,6 +141,7 @@ export default function RegisterPage() {
                   name="email"
                   placeholder="email"
                   onChange={handleEmail}
+                  required
                 />
                 <label htmlFor="email">email</label>
               </div>
@@ -96,6 +152,7 @@ export default function RegisterPage() {
                   name="password"
                   placeholder="password"
                   onChange={handlePassword}
+                  required
                 />
                 <label htmlFor="password">password</label>
               </div>
@@ -105,6 +162,7 @@ export default function RegisterPage() {
                   name="city"
                   placeholder="city"
                   onChange={handleCity}
+                  required
                 />
                 <label htmlFor="city">city</label>
               </div>

@@ -7,7 +7,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ButtonSubmitForm from "../Button/ButtonSumitForm";
 import { faSearch, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,9 +23,9 @@ export default function SearchAgencyForm() {
     var handleLocation = function (e) {
         setLocation(e.currentTarget.value);
     };
-    useEffect(function () {
-        console.log(service);
-    }, [service]);
+    // useEffect(() => {
+    //   console.log(service);
+    // }, [service]);
     var handleService = function (value) {
         console.log("Call");
         if (service.includes(value)) {

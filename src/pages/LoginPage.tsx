@@ -62,7 +62,7 @@ export default function LoginPage() {
             status={success ? "success" : "fail"}
           />
         );
-        console.log(result);
+
         if (data && success) {
           login(data);
           return navigate("/");
@@ -103,6 +103,7 @@ export default function LoginPage() {
                   placeholder="email"
                   autoComplete="on"
                   onChange={handleName}
+                  required
                 />
                 <label htmlFor="name">email</label>
               </div>
@@ -114,6 +115,7 @@ export default function LoginPage() {
                   placeholder="password"
                   autoComplete="on"
                   onChange={handlePassword}
+                  required
                 />
                 <label htmlFor="password">password</label>
               </div>

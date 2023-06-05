@@ -1,0 +1,29 @@
+[debug] [2023-06-05T00:04:39.985Z] ----------------------------------------------------------------------
+[debug] [2023-06-05T00:04:39.986Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\hienb\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-06-05T00:04:39.987Z] CLI Version:   12.0.0
+[debug] [2023-06-05T00:04:39.987Z] Platform:      win32
+[debug] [2023-06-05T00:04:39.987Z] Node Version:  v18.16.0
+[debug] [2023-06-05T00:04:39.988Z] Time:          Mon Jun 05 2023 07:04:39 GMT+0700 (Indochina Time)
+[debug] [2023-06-05T00:04:39.988Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-05T00:04:40.063Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-05T00:04:40.064Z] > authorizing via signed-in user (hienb697@gmail.com)
+[debug] [2023-06-05T00:04:40.064Z] [iam] checking project fya-ueh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-06-05T00:04:40.065Z] > refreshing access token with scopes: []
+[debug] [2023-06-05T00:04:40.067Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-06-05T00:04:40.067Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-05T00:05:02.217Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-06-05T00:05:02.219Z] > refreshing access token with scopes: []
+[debug] [2023-06-05T00:05:02.219Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-06-05T00:05:02.219Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-05T00:05:23.265Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2023-06-05T00:05:28.300Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\hienb\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+[error] 
+[error] Error: An unexpected error has occurred.

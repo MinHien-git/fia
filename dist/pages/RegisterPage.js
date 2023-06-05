@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import Section from "../components/Section/Section";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
@@ -43,12 +43,20 @@ import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
 import useScrollToTop from "../hook/useScrollToTop";
+import { useNavigate } from "react-router-dom";
+import Notification from "../components/Card/Notification";
+import Loader from "../components/Loader/Loader";
+import { AuthContext } from "../context/authenticateContext";
 export default function RegisterPage() {
     var _a = useState(""), name = _a[0], setName = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
     var _c = useState(""), email = _c[0], setEmail = _c[1];
     var _d = useState(""), city = _d[0], setCity = _d[1];
-    var _e = useToggleNavbar(), navbarBlock = _e[0], clearNavbarBlock = _e[1];
+    var _e = useState(React.createElement(React.Fragment, null)), load = _e[0], setLoader = _e[1];
+    var navigate = useNavigate();
+    var _f = useState(React.createElement(React.Fragment, null)), notification = _f[0], setNotification = _f[1];
+    var _g = useToggleNavbar(), navbarBlock = _g[0], clearNavbarBlock = _g[1];
+    var _h = useContext(AuthContext), auth = _h.auth, login = _h.login;
     useScrollToTop(0, 0);
     useEffect(function () {
         clearNavbarBlock();
@@ -57,26 +65,43 @@ export default function RegisterPage() {
         e.preventDefault();
         function postData() {
             return __awaiter(this, void 0, void 0, function () {
-                var request, data, success;
+                var request;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axiosClient.post("/signup/agencies", {
-                                name: name,
+                    setLoader(Loader);
+                    request = axiosClient.post("/signup/agencies", {
+                        name: name,
+                        email: email,
+                        password: password,
+                        location: city,
+                        convertToAgencies: true,
+                    });
+                    request.then(function (result) {
+                        var success = result.success, message = result.message;
+                        setNotification(React.createElement(Notification, { message: success
+                                ? "Resgister successfully"
+                                : "Resgister fail,please check your email and password", status: success ? "success" : "fail" }));
+                        if (success) {
+                            var login_request = axiosClient.post("/login", {
                                 email: email,
                                 password: password,
-                                location: city,
-                                convertToAgencies: true,
-                            })];
-                        case 1:
-                            request = _a.sent();
-                            data = request.data, success = request.success;
-                            console.log(request);
-                            console.log(data, success);
-                            return [2 /*return*/];
-                    }
+                            });
+                            request.then(function (result) {
+                                var success = result.success, message = result.message, response_status = result.response_status, data = result.data, pagination = result.pagination;
+                                console.log(result);
+                                if (data && success) {
+                                    login(data);
+                                    return navigate("/");
+                                }
+                            });
+                            return navigate("/");
+                        }
+                    });
+                    setLoader(React.createElement(React.Fragment, null));
+                    return [2 /*return*/];
                 });
             });
         }
+        console.log("submit");
         postData();
     };
     var handleEmail = function (e) {
@@ -92,23 +117,25 @@ export default function RegisterPage() {
         setPassword(e.currentTarget.value);
     };
     return (React.createElement(React.Fragment, null,
+        load,
         React.createElement(ContentSection, { className: "primary-register" },
             React.createElement(Section, { className: "register-page-primary" },
+                notification,
                 React.createElement("h1", { className: "deep-blue-clrs" }, "Register"),
                 React.createElement("hr", null),
                 React.createElement("div", { className: "register-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "name", onChange: handleName }),
+                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "name", onChange: handleName, required: true }),
                             React.createElement("label", { htmlFor: "name" }, "name")),
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "email", id: "email", name: "email", placeholder: "email", onChange: handleEmail }),
+                            React.createElement("input", { type: "email", id: "email", name: "email", placeholder: "email", onChange: handleEmail, required: true }),
                             React.createElement("label", { htmlFor: "email" }, "email")),
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", onChange: handlePassword }),
+                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", onChange: handlePassword, required: true }),
                             React.createElement("label", { htmlFor: "password" }, "password")),
                         React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { id: "city", name: "city", placeholder: "city", onChange: handleCity }),
+                            React.createElement("input", { id: "city", name: "city", placeholder: "city", onChange: handleCity, required: true }),
                             React.createElement("label", { htmlFor: "city" }, "city")),
                         React.createElement(ButtonSubmitForm, { button_string: "register" })),
                     React.createElement("p", null,

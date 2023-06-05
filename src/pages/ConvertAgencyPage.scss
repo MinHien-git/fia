@@ -1,0 +1,28 @@
+.business-page-start-section {
+  text-align: center;
+  margin-top: 3.5rem;
+  padding-top: 10rem;
+  height: 100vh;
+  h2 {
+    max-width: 15ch;
+    margin-top: 1rem;
+  }
+}
+.business-page-infomation-section {
+  text-align: center;
+  min-height: 100vh;
+  .tags-container {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    overflow-y: auto;
+    transition: all 100ms ease-in-out;
+    width: 90vw;
+  }
+  .form-section-button-container {
+    width: 70%;
+  }
+  h2 {
+    max-width: 15ch;
+    margin-top: 1rem;
+  }
+}

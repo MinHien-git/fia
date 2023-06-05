@@ -89,15 +89,17 @@ export default function Navbar() {
               For Client
             </Link>
           </li>
-          <li>
-            <Link
-              className="text-color"
-              to="./login"
-              onClick={HandleClickEvent}
-            >
-              For Agency
-            </Link>
-          </li>
+          {auth?.type === "AGENCY" ? (
+            <li>
+              <Link
+                className="text-color"
+                to="./login"
+                onClick={HandleClickEvent}
+              >
+                For Agency
+              </Link>
+            </li>
+          ) : null}
           <li>
             <SearchForm />
           </li>
@@ -113,16 +115,29 @@ export default function Navbar() {
               />
             </li>
           ) : (
-            <li>
-              <button
-                onClick={logoutEvent}
-                className={clsx("btn deep-blue-bg white-clrs md")}
-                typeof="button"
-                style={{ width: "9rem", background: "#c91c4a" }}
-              >
-                log out
-              </button>
-            </li>
+            <>
+              {auth?.type === "CLIENT" ? (
+                <li>
+                  <Link
+                    to="./business"
+                    className={clsx("btn business-plan md")}
+                    typeof="button"
+                  >
+                    Business Plan
+                  </Link>
+                </li>
+              ) : null}
+              <li>
+                <button
+                  onClick={logoutEvent}
+                  className={clsx("btn deep-blue-bg white-clrs md")}
+                  typeof="button"
+                  style={{ width: "9rem", background: "#c91c4a" }}
+                >
+                  log out
+                </button>
+              </li>
+            </>
           )}
         </ul>
       </div>
