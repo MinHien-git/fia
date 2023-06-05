@@ -1,3 +1,4 @@
+import { Request_Interface } from "../interfaces/app_interfaces";
 import axiosClient from "./axiosClient";
 
 const authService = {

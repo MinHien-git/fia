@@ -49,12 +49,15 @@ import AgencySuggestionCard from "../components/Card/AgencySuggestionCard";
 import ReviewFeedbackCard from "../components/Card/ReviewFeedbackCard";
 import axiosClient from "../api/axiosClient";
 import { useParams } from "react-router-dom";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
 export default function AgencyPage() {
     var id = useParams().id;
     var _a = useState({}), pageInformation = _a[0], setPageInformation = _a[1];
     useScrollToTop(0, 0);
+    var _b = useToggleNavbar(), navbarBlock = _b[0], clearNavbarBlock = _b[1];
     useEffect(function () {
         console.log(id);
+        clearNavbarBlock();
         function fetchData() {
             return __awaiter(this, void 0, void 0, function () {
                 var request;

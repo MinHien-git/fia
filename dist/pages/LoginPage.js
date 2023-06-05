@@ -35,15 +35,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import Section from "../components/Section/Section";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
 import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
+import { AuthContext } from "../context/authenticateContext";
+import useScrollToTop from "../hook/useScrollToTop";
+import { useNavigate } from "react-router-dom";
 export default function LoginPage() {
     var _a = useState(""), email = _a[0], setEmail = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
+    var _c = useToggleNavbar(), navbarBlock = _c[0], clearNavbarBlock = _c[1];
+    var _d = useContext(AuthContext), auth = _d.auth, login = _d.login;
+    var navigate = useNavigate();
+    useScrollToTop(0, 0);
+    useEffect(function () {
+        clearNavbarBlock();
+    }, []);
     var handleSubmit = function (e) {
         // console.log(`called ${email} ${password}`);
         e.preventDefault();
@@ -55,12 +66,20 @@ export default function LoginPage() {
                         email: email,
                         password: password,
                     });
-                    console.log(request);
+                    request.then(function (result) {
+                        var success = result.success, message = result.message, response_status = result.response_status, data = result.data, pagination = result.pagination;
+                        console.log(message);
+                        if (data && success) {
+                            login(data);
+                            return navigate("/");
+                        }
+                    });
                     return [2 /*return*/];
                 });
             });
         }
-        postData();
+        if (email && password)
+            postData();
     };
     var handleName = function (e) {
         setEmail(e.currentTarget.value);
@@ -71,7 +90,7 @@ export default function LoginPage() {
     return (React.createElement(React.Fragment, null,
         React.createElement(ContentSection, { className: "primary-login" },
             React.createElement(Section, { className: "login-page-primary" },
-                React.createElement("h1", null, "Login"),
+                React.createElement("h1", { className: "deep-blue-clrs" }, "Login"),
                 React.createElement("hr", null),
                 React.createElement("div", { className: "login-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },

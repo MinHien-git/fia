@@ -8,27 +8,33 @@ import AgenciesPage from "./pages/AgenciesPage";
 import AgencyPage from "./pages/AgencyPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import { AuthProvider } from "./context/authenticateContext";
+import { ThemeProvider } from "./context/themeContext";
+
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/agency">
-            <Route path="" element={<AgenciesPage />} />
-          </Route>
-          <Route path="agency/:id" element={<AgencyPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          {/* <Route path="/orders" element={<Orders />} />
+      <ThemeProvider>
+        <AuthProvider>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/agency">
+                <Route path="" element={<AgenciesPage />} />
+              </Route>
+              <Route path="agency/:id" element={<AgencyPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              {/* <Route path="/orders" element={<Orders />} />
           <Route path="/products" element={<Products />} />
           <Route path="/customers" element={<Customers />} /> */}
-        </Routes>
+            </Routes>
 
-        <Footer />
-      </Router>
+            <Footer />
+          </Router>
+        </AuthProvider>
+      </ThemeProvider>
     </>
   );
 }

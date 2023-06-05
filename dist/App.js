@@ -7,18 +7,22 @@ import AgenciesPage from "./pages/AgenciesPage";
 import AgencyPage from "./pages/AgencyPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import { AuthProvider } from "./context/authenticateContext";
+import { ThemeProvider } from "./context/themeContext";
 function App() {
     return (React.createElement(React.Fragment, null,
-        React.createElement(Router, null,
-            React.createElement(Navbar, null),
-            React.createElement(Routes, null,
-                React.createElement(Route, { path: "/", element: React.createElement(LandingPage, null) }),
-                React.createElement(Route, { path: "/agency" },
-                    React.createElement(Route, { path: "", element: React.createElement(AgenciesPage, null) })),
-                React.createElement(Route, { path: "agency/:id", element: React.createElement(AgencyPage, null) }),
-                React.createElement(Route, { path: "/login", element: React.createElement(LoginPage, null) }),
-                React.createElement(Route, { path: "/register", element: React.createElement(RegisterPage, null) })),
-            React.createElement(Footer, null))));
+        React.createElement(ThemeProvider, null,
+            React.createElement(AuthProvider, null,
+                React.createElement(Router, null,
+                    React.createElement(Navbar, null),
+                    React.createElement(Routes, null,
+                        React.createElement(Route, { path: "/", element: React.createElement(LandingPage, null) }),
+                        React.createElement(Route, { path: "/agency" },
+                            React.createElement(Route, { path: "", element: React.createElement(AgenciesPage, null) })),
+                        React.createElement(Route, { path: "agency/:id", element: React.createElement(AgencyPage, null) }),
+                        React.createElement(Route, { path: "/login", element: React.createElement(LoginPage, null) }),
+                        React.createElement(Route, { path: "/register", element: React.createElement(RegisterPage, null) })),
+                    React.createElement(Footer, null))))));
 }
 export default App;
 //# sourceMappingURL=App.js.map

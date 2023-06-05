@@ -159,6 +159,28 @@
   }
 }
 
+#notification {
+  width: 70vw;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  margin-inline: auto;
+  p {
+    font-weight: bold;
+  }
+  &.success {
+    background-color: #51f0ae;
+    color: #158556;
+    border: 2px solid #158556;
+  }
+  &.fail {
+    border: 2px solid #ff4e7d;
+    color: var(--white-color);
+    background-color: #ffb6ca;
+  }
+}
+
 @include g.desktop {
   .service-card {
     width: 25vw;

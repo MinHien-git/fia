@@ -44,15 +44,18 @@ import clsx from "clsx";
 import AgencyCard from "../components/Card/AgencyCard";
 import useScrollToTop from "../hook/useScrollToTop";
 import axiosClient from "../api/axiosClient";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
 export default function AgenciesPage() {
     var _a;
     var searchParams = useSearchParams()[0];
     var _b = useState([]), agencies = _b[0], setAgencies = _b[1];
     var _c = useState(searchParams.get("location")), location = _c[0], setLocation = _c[1];
     var _d = useState((_a = searchParams.get("service")) === null || _a === void 0 ? void 0 : _a.split(",")), services = _d[0], setServices = _d[1];
+    var _e = useToggleNavbar(), navbarBlock = _e[0], clearNavbarBlock = _e[1];
     useScrollToTop(0, 0);
     useEffect(function () {
         HandleTag();
+        clearNavbarBlock();
         function fetchData() {
             return __awaiter(this, void 0, void 0, function () {
                 var request, data, success;

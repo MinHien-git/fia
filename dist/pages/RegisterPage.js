@@ -35,17 +35,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import Section from "../components/Section/Section";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
 import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
+import { useToggleNavbar } from "../hook/useToggleNavbar";
+import useScrollToTop from "../hook/useScrollToTop";
 export default function RegisterPage() {
     var _a = useState(""), name = _a[0], setName = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
     var _c = useState(""), email = _c[0], setEmail = _c[1];
     var _d = useState(""), city = _d[0], setCity = _d[1];
+    var _e = useToggleNavbar(), navbarBlock = _e[0], clearNavbarBlock = _e[1];
+    useScrollToTop(0, 0);
+    useEffect(function () {
+        clearNavbarBlock();
+    }, []);
     var handleSubmit = function (e) {
         e.preventDefault();
         function postData() {
@@ -87,7 +94,7 @@ export default function RegisterPage() {
     return (React.createElement(React.Fragment, null,
         React.createElement(ContentSection, { className: "primary-register" },
             React.createElement(Section, { className: "register-page-primary" },
-                React.createElement("h1", null, "Register"),
+                React.createElement("h1", { className: "deep-blue-clrs" }, "Register"),
                 React.createElement("hr", null),
                 React.createElement("div", { className: "register-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },

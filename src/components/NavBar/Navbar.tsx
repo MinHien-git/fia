@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -6,18 +6,40 @@ import clsx from "clsx";
 import ButtonComponent from "../Button/ButtonComponent";
 import SearchForm from "../SearchForm/SearchForm";
 import { useScrollBlock } from "../../hook/useStopScroll";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
 import ButtonComponentLink from "../Button/ButtonComponentLink";
+import { AuthContext } from "../../context/authenticateContext";
+import {
+  AuthContextType,
+  Request_Interface,
+  User_Interface,
+} from "@/interfaces/app_interfaces";
+
 export default function Navbar() {
   const [toggle, setToggle] = useState<Boolean>(false);
   const [blockScroll, allowScroll] = useScrollBlock();
+  const { auth, login, logout } = useContext(AuthContext) as AuthContextType;
+  const navigate = useNavigate();
 
   useEffect(() => {
     toggle ? blockScroll() : allowScroll();
   }, [toggle]);
+
   const ToggleBurger = () => {
     setToggle(!toggle);
   };
+
+  const logoutEvent = () => {
+    logout();
+    setToggle(false);
+    return navigate("/");
+  };
+
   const HandleClickEvent = () => {
     setToggle(false);
   };
@@ -82,13 +104,26 @@ export default function Navbar() {
           <li>
             <ButtonComponent button_string={"Post your Project"} />
           </li>
-          <li>
-            <ButtonComponentLink
-              button_string={"Login or Resigter"}
-              to="./register"
-              onClickEvent={HandleClickEvent}
-            />
-          </li>
+          {!auth ? (
+            <li>
+              <ButtonComponentLink
+                button_string={"Login or Resigter"}
+                to="./register"
+                onClickEvent={HandleClickEvent}
+              />
+            </li>
+          ) : (
+            <li>
+              <button
+                onClick={logoutEvent}
+                className={clsx("btn deep-blue-bg white-clrs md")}
+                typeof="button"
+                style={{ width: "9rem", background: "#c91c4a" }}
+              >
+                log out
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

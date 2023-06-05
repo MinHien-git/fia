@@ -101,3 +101,46 @@ export interface Card_Interface {
   desc: string;
   icon: IconDefinition;
 }
+
+export interface Get_Interface {
+  success: boolean;
+  message: string;
+  response_status: number;
+  data: Object;
+  pagination: Object | string | undefined;
+}
+
+export interface Request_Interface {
+  success: boolean;
+  message: string;
+  response_status: number;
+  data: User_Interface | undefined;
+  pagination: Object | string | undefined;
+}
+
+export interface User_Interface {
+  _id?: string;
+  name?: string;
+  type?: string;
+  page?: string;
+}
+
+export type AuthContextType = {
+  auth: User_Interface | undefined;
+  logout: () => void;
+  login: (user: User_Interface) => void;
+};
+
+export type Theme = "light" | "dark";
+
+export type ThemeContextType = {
+  theme: Theme;
+  changeTheme: (theme: Theme) => void;
+};
+
+export type status = "success" | "fail" | "none";
+
+export interface Notification_Interface {
+  status: status;
+  message: string;
+}

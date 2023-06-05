@@ -75,7 +75,7 @@ export default function LandingPage() {
         </div>
       </Section>
       <Section className="landing-page-primary-resources">
-        <h2>Join the community of agencies</h2>
+        <h2 className="deep-blue-clrs">Join the community of agencies</h2>
         <p className="grey-color">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at
           sapien eu ipsum ornare{" "}
@@ -114,7 +114,7 @@ export default function LandingPage() {
         </div>
       </Section>
       <Section className="landing-page-primary-resources">
-        <h2>Our Resources</h2>
+        <h2 className="deep-blue-clrs">Our Resources</h2>
         <p className="grey-color">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at
           sapien eu ipsum ornare{" "}

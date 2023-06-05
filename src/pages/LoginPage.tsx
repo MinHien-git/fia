@@ -1,16 +1,33 @@
 import Section from "../components/Section/Section";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./LoginPage.scss";
 import ContentSection from "../components/ContentSection/ContentSection";
 import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
+import { AuthContext } from "../context/authenticateContext";
+import {
+  AuthContextType,
+  Request_Interface,
+  User_Interface,
+} from "@/interfaces/app_interfaces";
+import { debug } from "console";
+import useScrollToTop from "../hook/useScrollToTop";
+import { redirect, useNavigate } from "react-router-dom";
+import Notification from "../components/Card/Notification";
+import Loader from "../components/Loader/Loader";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<String>("");
   const [password, setPassword] = useState<String>("");
   const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
+  const { auth, login } = useContext(AuthContext) as AuthContextType;
+  const navigate = useNavigate();
+  let [notification, setNotification] = useState(<></>);
+  let [load, setLoader] = useState(<></>);
+
+  useScrollToTop(0, 0);
 
   useEffect(() => {
     clearNavbarBlock();
@@ -19,31 +36,61 @@ export default function LoginPage() {
   const handleSubmit: React.FormEventHandler = (
     e: React.FormEvent<HTMLInputElement>
   ) => {
-    // console.log(`called ${email} ${password}`);
     e.preventDefault();
     async function postData() {
-      const request = axiosClient.post(`/login`, {
+      setLoader(Loader);
+      const request = axiosClient.post<any, Request_Interface>(`/login`, {
         email: email,
         password: password,
       });
-      console.log(request);
+      request.then((result) => {
+        const {
+          success,
+          message,
+          response_status,
+          data,
+          pagination,
+        }: Request_Interface = result;
+
+        setNotification(
+          <Notification
+            message={
+              success
+                ? "Login successfully"
+                : "Login fail,please check your email and password"
+            }
+            status={success ? "success" : "fail"}
+          />
+        );
+        console.log(result);
+        if (data && success) {
+          login(data);
+          return navigate("/");
+        }
+        setLoader(<></>);
+      });
     }
-    postData();
+    if (email && password) postData();
   };
+
   const handleName: React.FormEventHandler = (
     e: React.FormEvent<HTMLInputElement>
   ) => {
     setEmail(e.currentTarget.value);
   };
+
   const handlePassword: React.FormEventHandler = (
     e: React.FormEvent<HTMLInputElement>
   ) => {
     setPassword(e.currentTarget.value);
   };
+
   return (
     <>
+      {load}
       <ContentSection className="primary-login">
         <Section className="login-page-primary">
+          {notification}
           <h1 className="deep-blue-clrs">Login</h1>
           <hr />
           <div className="login-container-section flex">

@@ -18,9 +18,9 @@ export default function SearchAgencyForm() {
     setLocation(e.currentTarget.value);
   };
 
-  useEffect(() => {
-    console.log(service);
-  }, [service]);
+  // useEffect(() => {
+  //   console.log(service);
+  // }, [service]);
 
   const handleService = (value: string) => {
     console.log("Call");

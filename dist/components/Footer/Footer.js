@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.scss";
 export default function Footer() {
-    return (React.createElement("footer", { className: "primary-footer" },
+    return (React.createElement("footer", { className: "primary-footer relative" },
         React.createElement("div", null,
             React.createElement("div", { className: "main-footer" },
                 React.createElement("div", { className: "footer-company-content flex" },

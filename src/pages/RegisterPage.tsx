@@ -6,6 +6,7 @@ import ContentSection from "../components/ContentSection/ContentSection";
 import ButtonSubmitForm from "../components/Button/ButtonSumitForm";
 import axiosClient from "../api/axiosClient";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
+import useScrollToTop from "../hook/useScrollToTop";
 
 export default function RegisterPage() {
   const [name, setName] = useState<String>("");
@@ -14,7 +15,7 @@ export default function RegisterPage() {
   const [city, setCity] = useState<String>("");
 
   const [navbarBlock, clearNavbarBlock] = useToggleNavbar();
-
+  useScrollToTop(0, 0);
   useEffect(() => {
     clearNavbarBlock();
   }, []);
