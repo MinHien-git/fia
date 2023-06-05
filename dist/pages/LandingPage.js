@@ -9,8 +9,10 @@ import useScrollToTop from "../hook/useScrollToTop";
 import ButtonComponent from "../components/Button/ButtonComponent";
 import VerticalCard from "../components/Card/VerticalCard";
 import { faSearch, faLocationCrosshairs, faCheck, faBell, faChildReaching, } from "@fortawesome/free-solid-svg-icons";
+import useSetTitle from "../hook/useSetTitle";
 export default function LandingPage() {
     useScrollToTop(0, 0);
+    useSetTitle("Fya | Home");
     return (React.createElement(ContentSection, null,
         React.createElement(Section, { className: "landing-page-primary" },
             React.createElement("img", { className: "wave", src: "./wave.svg", alt: "wave" }),

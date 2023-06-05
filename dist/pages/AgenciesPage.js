@@ -45,6 +45,7 @@ import AgencyCard from "../components/Card/AgencyCard";
 import useScrollToTop from "../hook/useScrollToTop";
 import axiosClient from "../api/axiosClient";
 import { useToggleNavbar } from "../hook/useToggleNavbar";
+import useSetTitle from "../hook/useSetTitle";
 export default function AgenciesPage() {
     var _a;
     var searchParams = useSearchParams()[0];
@@ -53,6 +54,7 @@ export default function AgenciesPage() {
     var _d = useState((_a = searchParams.get("service")) === null || _a === void 0 ? void 0 : _a.split(",")), services = _d[0], setServices = _d[1];
     var _e = useToggleNavbar(), navbarBlock = _e[0], clearNavbarBlock = _e[1];
     useScrollToTop(0, 0);
+    useSetTitle("Fya | Find Agencies");
     useEffect(function () {
         HandleTag();
         clearNavbarBlock();

@@ -48,6 +48,7 @@ import { useNavigate } from "react-router-dom";
 import Notification from "../components/Card/Notification";
 import Loader from "../components/Loader/Loader";
 import InputField from "../components/InputForm/InputField";
+import useSetTitle from "../hook/useSetTitle";
 export default function LoginPage() {
     var _a = useState(""), email = _a[0], setEmail = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
@@ -57,6 +58,7 @@ export default function LoginPage() {
     var _e = useState(React.createElement(React.Fragment, null)), notification = _e[0], setNotification = _e[1];
     var _f = useState(React.createElement(React.Fragment, null)), load = _f[0], setLoader = _f[1];
     useScrollToTop(0, 0);
+    useSetTitle("Fya | Login");
     useEffect(function () {
         clearNavbarBlock();
     }, []);
@@ -105,9 +107,7 @@ export default function LoginPage() {
                 React.createElement("div", { className: "login-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },
                         React.createElement(InputField, { type: "text", id: "name", label: "name", formEvent: handleName }),
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", autoComplete: "on", onChange: handlePassword, required: true }),
-                            React.createElement("label", { htmlFor: "password" }, "password")),
+                        React.createElement(InputField, { type: "password", id: "password", label: "password", formEvent: handlePassword }),
                         React.createElement(ButtonSubmitForm, { button_string: "login" })),
                     React.createElement("p", null,
                         "Don't have account yet?",

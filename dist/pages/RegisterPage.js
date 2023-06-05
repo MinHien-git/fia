@@ -47,6 +47,8 @@ import { useNavigate } from "react-router-dom";
 import Notification from "../components/Card/Notification";
 import Loader from "../components/Loader/Loader";
 import { AuthContext } from "../context/authenticateContext";
+import InputField from "../components/InputForm/InputField";
+import useSetTitle from "../hook/useSetTitle";
 export default function RegisterPage() {
     var _a = useState(""), name = _a[0], setName = _a[1];
     var _b = useState(""), password = _b[0], setPassword = _b[1];
@@ -58,6 +60,7 @@ export default function RegisterPage() {
     var _g = useToggleNavbar(), navbarBlock = _g[0], clearNavbarBlock = _g[1];
     var _h = useContext(AuthContext), auth = _h.auth, login = _h.login;
     useScrollToTop(0, 0);
+    useSetTitle("Fya | Register");
     useEffect(function () {
         clearNavbarBlock();
     }, []);
@@ -125,18 +128,10 @@ export default function RegisterPage() {
                 React.createElement("hr", null),
                 React.createElement("div", { className: "register-container-section flex" },
                     React.createElement("form", { className: "login-form-section flex", onSubmit: handleSubmit },
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "text", id: "name", name: "name", placeholder: "name", onChange: handleName, required: true }),
-                            React.createElement("label", { htmlFor: "name" }, "name")),
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "email", id: "email", name: "email", placeholder: "email", onChange: handleEmail, required: true }),
-                            React.createElement("label", { htmlFor: "email" }, "email")),
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { type: "password", id: "password", name: "password", placeholder: "password", onChange: handlePassword, required: true }),
-                            React.createElement("label", { htmlFor: "password" }, "password")),
-                        React.createElement("div", { className: "grid input-container" },
-                            React.createElement("input", { id: "city", name: "city", placeholder: "city", onChange: handleCity, required: true }),
-                            React.createElement("label", { htmlFor: "city" }, "city")),
+                        React.createElement(InputField, { type: "text", id: "name", label: "name", formEvent: handleName }),
+                        React.createElement(InputField, { type: "email", id: "email", label: "email", formEvent: handleEmail }),
+                        React.createElement(InputField, { type: "password", id: "password", label: "password", formEvent: handlePassword }),
+                        React.createElement(InputField, { type: "city", id: "city", label: "city", formEvent: handleCity }),
                         React.createElement(ButtonSubmitForm, { button_string: "register" })),
                     React.createElement("p", null,
                         "Already have account?",
