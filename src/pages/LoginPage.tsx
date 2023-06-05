@@ -17,6 +17,8 @@ import useScrollToTop from "../hook/useScrollToTop";
 import { redirect, useNavigate } from "react-router-dom";
 import Notification from "../components/Card/Notification";
 import Loader from "../components/Loader/Loader";
+import InputField from "../components/InputForm/InputField";
+import useSetTitle from "../hook/useSetTitle";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<String>("");
@@ -29,6 +31,7 @@ export default function LoginPage() {
 
   useScrollToTop(0, 0);
 
+  useSetTitle("Fya | Login");
   useEffect(() => {
     clearNavbarBlock();
   }, []);
@@ -95,7 +98,7 @@ export default function LoginPage() {
           <hr />
           <div className="login-container-section flex">
             <form className="login-form-section flex" onSubmit={handleSubmit}>
-              <div className="grid input-container">
+              {/* <div className="grid input-container">
                 <input
                   type="text"
                   id="name"
@@ -106,19 +109,19 @@ export default function LoginPage() {
                   required
                 />
                 <label htmlFor="name">email</label>
-              </div>
-              <div className="grid input-container">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="password"
-                  autoComplete="on"
-                  onChange={handlePassword}
-                  required
-                />
-                <label htmlFor="password">password</label>
-              </div>
+              </div> */}
+              <InputField
+                type="text"
+                id="name"
+                label="name"
+                formEvent={handleName}
+              />
+              <InputField
+                type="password"
+                id="password"
+                label="password"
+                formEvent={handlePassword}
+              />
               <ButtonSubmitForm button_string="login" />
             </form>
             <p>
