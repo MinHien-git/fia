@@ -1,0 +1,215 @@
+@use "./_variables" as var;
+@import "./mixins";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Pacifico&display=swap");
+$sm-mobile-width: 320px;
+$mobile-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+@mixin sm-mobile {
+  @media (max-width: #{$sm-mobile-width - 1px}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobile-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+:root {
+  --gap: 1rem;
+  --white-color: #{var.$white-color};
+  --deep-blue-color: #{var.$primaryColor1Light};
+  --grey-color: #{var.$textGreyLight};
+  --blue-color: #{var.$primaryColor2Light};
+  --light-blue-color: #{var.$primaryColor3Light};
+  --very-light-blue-color: #{var.$primaryColor4Light};
+  --deep-light-blue-color: #{var.$primaryColor5Light};
+  --text-color-light: #{var.$textColorLight};
+  --dark-text-color: #{var.$textColor2Light};
+  --linear-color1: #{var.$linearPrimaryColor};
+
+  --fs300: 0.825rem;
+}
+body,
+html {
+  line-height: 1.5;
+  font-family: "Montserrat", sans-serif;
+  max-height: 100%;
+  z-index: -1;
+}
+body {
+  background-color: #f9f9f9;
+}
+#root {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  & > * {
+    grid-column: 1 / span 6;
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  scroll-behavior: smooth;
+
+  font-family: inherit;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+*::-webkit-scrollbar {
+  width: 1px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  margin: auto auto;
+}
+
+.justifies-center {
+  justify-content: center;
+}
+
+.move-left {
+  margin-right: auto;
+}
+
+.move-right {
+  margin-left: auto;
+}
+.text-center {
+  text-align: center;
+}
+
+.white-bg {
+  background: var(--white-color);
+}
+
+.white-clrs {
+  color: var(--white-color);
+}
+
+.deep-blue-bg {
+  background-color: var(--deep-blue-color);
+}
+
+.red-bg {
+  background: rgb(201, 28, 74);
+}
+
+.deep-blue-clrs {
+  color: var(--deep-blue-color);
+}
+
+.blue-bg {
+  background-color: var(--blue-color);
+}
+
+.blue-clrs {
+  color: var(--blue-color);
+}
+
+.light-blue-bg {
+  background-color: var(--light-blue-color);
+}
+
+.light-blue-clrs {
+  color: var(--light-blue-color);
+}
+
+.very-light-blue-bg {
+  background-color: var(--very-light-blue-color);
+}
+
+.very-light-blue-clrs {
+  color: var(--very-light-blue-color);
+}
+
+.text-color {
+  color: var(--text-color-light);
+}
+
+.dark-text-color {
+  color: var(--dark-text-color);
+}
+
+.grey-color {
+  color: var(--grey-color);
+}
+
+.grey-bg {
+  background-color: var(--grey-color);
+}
+
+.button-text-color {
+  color: var(--white-color);
+}
+
+.margin-l0 {
+  margin-left: 0;
+}
+
+.margin-r0 {
+  margin-right: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-15 {
+  gap: 1.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}

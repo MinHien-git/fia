@@ -1,0 +1,61 @@
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 4rem;
+  padding-inline: 1rem;
+  border-radius: 2px;
+  padding-block: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 200ms ease-in;
+  transform: scale(1);
+  cursor: pointer;
+  &.tertiary {
+    border: 2px solid var(--deep-blue-color);
+    background-color: transparent;
+    color: var(--deep-blue-color);
+  }
+
+  & > * {
+    z-index: 10;
+  }
+  &.sm {
+    min-height: 2rem;
+  }
+  &.md {
+    min-height: 2.25rem;
+    font-size: 0.75rem;
+  }
+
+  &.w100 {
+    width: 100%;
+    text-align: center;
+  }
+  &:not(.stop)::before {
+    position: absolute;
+    content: "";
+    transform-origin: center left;
+    background-color: var(--deep-light-blue-color);
+    border-radius: 5px;
+    width: 0%;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    transition: all 200ms ease-in;
+  }
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+  &:active {
+    transform-origin: center center;
+    transform: scale(1.1);
+  }
+  &:hover::before,
+  &:active::before,
+  &:focus::before {
+    width: 100%;
+  }
+}

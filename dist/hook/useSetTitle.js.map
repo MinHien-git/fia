@@ -1,0 +1,1 @@
+{"version":3,"file":"useSetTitle.js","sourceRoot":"","sources":["../../src/hook/useSetTitle.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAClC,MAAM,CAAC,OAAO,UAAU,WAAW,CAAC,KAAa;IAC/C,SAAS,CAAC;QACR,QAAQ,CAAC,KAAK,GAAG,KAAK,CAAC;IACzB,CAAC,EAAE,EAAE,CAAC,CAAC;AACT,CAAC"}
